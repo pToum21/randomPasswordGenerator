@@ -1,6 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var passwordArr = [];
+
 
 // Arrays for random generation
 const numbers = '0123456789'.split('');
@@ -19,17 +19,19 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-
+generateBtn.addEventListener("click", writePassword);
 
 // Function that generates the password length and all the alert boxes
 function generatePassword() {
+  var passwordArr = [];
+  
   let passwordLength = prompt('Enter length of password you want, Must be more then 8 characters and less then 128')
-  while (passwordLength > 128 || passwordLength < 8) {
+  while (passwordLength < 8|| passwordLength > 128 || isNaN(passwordLength)) {
 
     alert('Your password is the wrong amount of Characters!');
     passwordLength = prompt('Enter length of password you want, Must be more then 8 characters and less then 128')
 
-    // return (False);
+    
   }
 // let statements that allow the user to select what charcters they want in their password
   let chooseNumbers = confirm('Would you like to use numbers in you password?');
@@ -67,4 +69,3 @@ function generatePassword() {
   return passwordArr;
 }
 
-generateBtn.addEventListener("click", writePassword);
