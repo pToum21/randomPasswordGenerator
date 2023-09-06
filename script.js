@@ -2,7 +2,7 @@
 var generateBtn = document.querySelector("#generate");
 var passwordArr = [];
 
-// Arrays
+// Arrays for random generation
 const numbers = '0123456789'.split('');
 const upperCaseAlphebet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 const lowerCaseAlphebet = 'abcdefghijklmnopqrstuvwxyz'.split('');
@@ -21,7 +21,7 @@ function writePassword() {
 // Add event listener to generate button
 
 
-
+// Function that generates the password length and all the alert boxes
 function generatePassword() {
   let passwordLength = prompt('Enter length of password you want, Must be more then 8 characters and less then 128')
   while (passwordLength > 128 || passwordLength < 8) {
@@ -31,12 +31,12 @@ function generatePassword() {
 
     // return (False);
   }
-
+// let statements that allow the user to select what charcters they want in their password
   let chooseNumbers = confirm('Would you like to use numbers in you password?');
   let chooseUpperCaseLetters = confirm('Would you like to use uppercase letters in you password?');
   let chooseLowerCaseLetters = confirm('Would you like to use lowercase letters in you password?');
   let chooseSpecialCharacters = confirm('Would you like to use special characters in you password?');
-
+// if no parameter was selected by the user
   while (!chooseNumbers && !chooseLowerCaseLetters && !chooseUpperCaseLetters && !chooseSpecialCharacters) {
     alert('You must select a parameter!');
     chooseNumbers = confirm('Would you like to use numbers in you password?');
@@ -59,7 +59,7 @@ function generatePassword() {
   if (chooseSpecialCharacters) {
     newPassWordArr = newPassWordArr.concat(specialCharacters);
   }
-
+// for loop that actually generates the random password to the open array
   for (let i = 0; i < passwordLength; i++) {
     let randomIndex = (Math.floor(Math.random() * newPassWordArr.length));
     passwordArr += newPassWordArr[randomIndex];
